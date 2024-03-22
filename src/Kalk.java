@@ -14,7 +14,7 @@ public class Kalk{
     public static String calc(String str) throws Exception {
         String[] parts = str.split(" ");
         if (parts.length != 3)
-            throw new IllegalArgumentException("Неверный формат ввода");
+            throw new Exception("Неверный формат ввода");
 
         String a = parts[0];
         String znak = parts[1];
@@ -23,7 +23,7 @@ public class Kalk{
         int num1, num2;
 
         if ((isRomanNumber(a) && !isRomanNumber(b)) || (!isRomanNumber(a) && isRomanNumber(b))) {
-            throw new IllegalArgumentException("Разные системы счисления");
+            throw new Exception("Разные системы счисления");
         }
 
         if (isRomanNumber(a) && isRomanNumber(b)) {
@@ -34,7 +34,7 @@ public class Kalk{
             num2 = Integer.parseInt(b);
 
             if (num1 < 1 || num1 > 10 || num2 < 1 || num2 > 10) {
-                throw new IllegalArgumentException("Число должно быть в диапазоне от 1 до 10 включительно");
+                throw new Exception("Число должно быть от 1 до 10 включительно");
             }
         }
 
@@ -46,7 +46,7 @@ public class Kalk{
             case "-":
                 if (isRomanNumber(a) && isRomanNumber(b)) {
                     if (num1 <= num2) {
-                        throw new IllegalArgumentException("Результат вычитания двух римских чисел не может быть <= 0");
+                        throw new Exception("Результат вычитания двух римских чисел не может быть <= 0");
                     }
                 }
                 result = String.valueOf(num1 - num2);
@@ -80,7 +80,7 @@ return result;
     }
 
 
-    private static int romanToArabic(String roman) {
+    private static int romanToArabic(String roman) throws Exception {
         switch (roman) {
             case "I":
                 return 1;
@@ -103,7 +103,7 @@ return result;
             case "X":
                 return 10;
             default:
-                throw new IllegalArgumentException("Неверное римское число. Должно быть от I до X включительно");
+                throw new Exception("Неверное римское число. Должно быть от I до X включительно");
         }
     }
 
