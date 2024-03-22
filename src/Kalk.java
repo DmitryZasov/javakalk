@@ -58,7 +58,7 @@ public class Kalk{
                 result = String.valueOf(num1 / num2);
                 break;
             default:
-                throw new IllegalArgumentException("Недопустимый оператор");
+                throw new Exception("Недопустимый оператор");
         }
 
         if (isRomanNumber(a) && isRomanNumber(b))
